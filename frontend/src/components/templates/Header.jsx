@@ -4,12 +4,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import { toggleMenu } from '../../config/store'; // Ajuste o caminho conforme necessário
 // import UserCart from './UserCart'; // Atualize o caminho conforme necessário
 // import UserBalanceComponent from './UserBalanceComponent'; // Atualize o caminho conforme necessário
-// import UserDropdownComponent from './UserDropdownComponent'; // Atualize o caminho conforme necessário
+import UserDropdownComponent from './UserDropdown';
 import '../../styles/Header.css'; // Certifique-se de que o caminho está correto
 
 const Header = ({ title, hideToggle, hideUserDropdown }) => {
-  const isMenuVisible = useSelector((state) => state.isMenuVisible);
-  const dispatch = useDispatch();
+  const isMenuVisible = useSelector((state) => state.isMenuVisible); //chama initialState
+  const dispatch = useDispatch(); //chama reducers
 
   // Computed property
   const icon = isMenuVisible ? 'fa-angle-left' : 'fa-angle-down';
@@ -43,8 +43,8 @@ const Header = ({ title, hideToggle, hideUserDropdown }) => {
       {!hideUserDropdown && (
         <>
           {/* <UserCart />
-          <UserBalanceComponent />
-          <UserDropdownComponent /> */}
+          <UserBalanceComponent />*/}
+          <UserDropdownComponent /> 
         </>
       )}
     </header>

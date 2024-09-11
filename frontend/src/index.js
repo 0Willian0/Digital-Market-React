@@ -8,18 +8,20 @@ import './config/axios'; // Configurações do Axios
 import './config/mq'; // Configurações de Media Queries, se houver
 
 // Importação de componentes e configuração de estado/roteamento
-import App from './App'; // Componente principal
+
 import { Provider } from 'react-redux'; // Provedor do Redux
 import store from './config/store'; // Store configurado no Redux
-import {BrowserRouter as Router } from 'react-router-dom'; // React Router
+import { RouterProvider, BrowserRouter as Router } from 'react-router-dom'; // RouterProvider para o createBrowserRouter
+import router from './config/router'; // Importa o roteador criado no arquivo de roteamento
+import App from './App';
 
 // Configurações do React (não precisa do productionTip como no Vue)
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Provider store={store}>
-      <Router>
-        <App />
-      </Router>
+      {/* Use apenas o RouterProvider, pois você está usando createBrowserRouter */}
+      <RouterProvider router={router} />
+      
     </Provider>
   </React.StrictMode>
 );

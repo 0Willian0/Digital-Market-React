@@ -1,23 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+
 import axios from 'axios';
 import { baseApiUrl, userKey } from './global'; 
-import { setUser, toggleMenu } from './config/store'; 
+import {toggleMenu } from './config/store'; 
 import './App.css';
-
 import HeaderComponent from './components/templates/Header'; 
 import ContentComponent from './components/templates/Content';
 import MenuComponent from './components/templates/Menu';
 import FooterComponent from './components/templates/Footer';
 
 
+
 const App = () => {
-  const dispatch = useDispatch();
+  const isMenuVisible = useSelector((state) => state.isMenuVisible);
+  /*const dispatch = useDispatch();
   const navigate = useNavigate();
   const [validatingToken, setValidatingToken] = useState(true);
 
-  const isMenuVisible = useSelector((state) => state.isMenuVisible);
+  
   const user = useSelector((state) => state.user);
 
   const validateToken = async () => {
@@ -57,18 +58,17 @@ const App = () => {
   useEffect(() => {
     validateToken();
   }, []);
-
+*/
   return (
-    <div id="app">
-      <HeaderComponent title="Digital Market" hideToggle={false} hideUserDropdown={false} />
-        {/* {user && <MenuComponent />}
-        {validatingToken ? <LoadingComponent /> : <ContentComponent />}
-        <FooterComponent /> */}
-      <ContentComponent/>
-      <MenuComponent/>
-      <FooterComponent/>
-    </div>
-    
+      <div id="app" className={isMenuVisible ? 'hide-menu' : ''}>
+        <HeaderComponent title="Digital Market" hideToggle={false} hideUserDropdown={false} />
+          {/* {user && <MenuComponent />}
+          {validatingToken ? <LoadingComponent /> : <ContentComponent />}
+          <FooterComponent /> */}
+        <ContentComponent />
+        <MenuComponent/>
+        <FooterComponent/>
+      </div>
   );
 };
 

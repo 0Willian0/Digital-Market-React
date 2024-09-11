@@ -5,8 +5,10 @@ import axios from 'axios';
 const appSlice = createSlice({
   name: 'app',
   initialState: {
-    isMenuVisible: true,
-    user: null,
+    isMenuVisible: false,
+    user: {
+      name: 'Yuna'
+    },
   },
   reducers: {
     toggleMenu(state, action){
@@ -21,11 +23,8 @@ const appSlice = createSlice({
       } else {
           state.isMenuVisible = isVisible;
       }
-  
-      console.log("toggle: " + state.isMenuVisible); // Log para depuração
-
   },
-    setUser: (state, action) => {
+    /*setUser: (state, action) => {
       const user = action.payload;
       if (user) {
         axios.defaults.headers.common['Authorization'] = `Bearer ${user.token}`;
@@ -36,12 +35,12 @@ const appSlice = createSlice({
         state.user = null;
         state.isMenuVisible = false;
       }
-    },
+    },*/
   },
 });
 
 // Exportar as ações
-export const { toggleMenu, setUser } = appSlice.actions;
+export const { toggleMenu } = appSlice.actions;
 
 // Criar o store
 const store = configureStore({
