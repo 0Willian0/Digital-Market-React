@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import {Link} from 'react-router-dom';
 import '../../styles/UserDropdown.css'
 
+
 const UserDropdown = ()=>{
     const user = useSelector((state) => state.user);
     return(
@@ -16,6 +17,7 @@ const UserDropdown = ()=>{
             </div>
             <div className="user-dropdown-content">
                 <Link to='admin'><i className="fa fa-cogs"></i> Administracao</Link>
+                <Link to='/'><i className="fa fa-sign-out"></i> Sair</Link>
             </div>
         </div>
     );
