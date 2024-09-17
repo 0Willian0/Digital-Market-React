@@ -24,7 +24,7 @@ const ProductsAdmin = ()=>{
 
     const loadProducts = async () => {
         try {
-            const url = `${baseApiUrl}/products`;
+            const url = `${baseApiUrl}/products?page=${page}`;
             const res = await axios.get(url); // Aguarda a resposta
             setProducts(res.data.data || res.data);
             setCount(res.data.count);
@@ -75,9 +75,11 @@ const ProductsAdmin = ()=>{
         }
       };
 
-      const loadProduct = (product, mode = 'save') => {
+      const loadProduct = async (product, mode = 'save') => {
         setMode(mode);
-        setProduct({ ...product });
+        const url = `${baseApiUrl}/products/${product.id}`
+        const res = await axios.get(url); // Aguarda a resposta
+        setProduct(res.data)
       };
 
     useEffect(() => {

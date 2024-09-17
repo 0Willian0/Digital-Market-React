@@ -3,7 +3,7 @@ import { createBrowserRouter, RouterProvider, Navigate, createRoutesFromElements
 import Home from '../components/home/Home';
 import AdminPages from '../components/admin/AdminPages';
 import App from '../App';
-// import ProductsByCategory from '../components/product/ProductsByCategory';
+import ProductsByCategory from '../components/product/ProductByCategory';
 // import ProductById from '../components/product/ProductById';
 // import Cart from '../components/cart/Cart';
 // import History from '../components/history/History';
@@ -30,6 +30,10 @@ const router = createBrowserRouter([
       {
         path: 'admin',
         element: <AdminPages />, // Outra rota que será renderizada no Outlet
+      },
+      {
+        path: 'categories/:id/products',
+        element: <ProductsByCategory />,
       },
     ],
   },
