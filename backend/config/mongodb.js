@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const uri = "mongodb://localhost/knowledge_stats";
+const uri = "mongodb://localhost/digital_market_stats";
 
 // A configuração 'useUnifiedTopology' deve ser passada diretamente no connect
 mongoose.connect(uri, {

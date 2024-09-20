@@ -20,9 +20,6 @@ const Menu = () => {
       try {
         const url = `${baseApiUrl}/categories/tree`; // Ajuste a URL para o seu backend
         const { data } = await axios.get(url);
-
-        console.log('Dados recebidos:', data);
-
         const formatTreeData = (nodes) => {
           return nodes.map(node => ({
             key: node.id, // Garanta que cada nó tenha um key único
@@ -32,7 +29,6 @@ const Menu = () => {
         };
 
         const formattedData = formatTreeData(data);
-        console.log('Dados formatados:', formattedData);
 
         setTreeData(formattedData);
         setFilteredTreeData(formattedData);
@@ -85,7 +81,7 @@ const Menu = () => {
 
   return (
     <>
-    {!isMenuVisible && (
+    {isMenuVisible && (
       <aside className="menu">
         <div className="menu-filter">
           <SearchOutlined />

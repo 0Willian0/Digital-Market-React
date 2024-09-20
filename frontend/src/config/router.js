@@ -8,15 +8,14 @@ import ProductsByCategory from '../components/product/ProductByCategory';
 // import Cart from '../components/cart/Cart';
 // import History from '../components/history/History';
 // import HistoryProducts from '../components/history/HistoryProducts';
-// import Auth from '../components/auth/Auth';
-// import { userKey } from '../global';
+import Auth from '../components/auth/Auth';
+import { userKey } from '../global';
 
-// const RequireAdmin = ({ children }) => {
-//   const json = localStorage.getItem(userKey);
-//   const user = JSON.parse(json);
-
-//   return user && user.admin ? children : <Navigate to="/" />;
-// };
+const isAdmin = () => {
+  const json = localStorage.getItem(userKey);
+  const user = json ? JSON.parse(json) : null;
+  return user && user.admin;
+};
 
 const router = createBrowserRouter([
   {
@@ -28,13 +27,17 @@ const router = createBrowserRouter([
         element: <Home />, // Componente que será renderizado no Outlet
       },
       {
-        path: 'admin',
-        element: <AdminPages />, // Outra rota que será renderizada no Outlet
+        path:"/admin" ,
+        element: isAdmin() ? <AdminPages /> : <Navigate to="/" /> , // Outra rota que será renderizada no Outlet
       },
       {
         path: 'categories/:id/products',
         element: <ProductsByCategory />,
       },
+      {
+          path: 'auth',
+          element: <Auth />,
+      }
     ],
   },
 ]);

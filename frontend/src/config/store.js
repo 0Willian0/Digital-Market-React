@@ -6,25 +6,18 @@ const appSlice = createSlice({
   name: 'app',
   initialState: {
     isMenuVisible: false,
-    user: {
-      name: 'Yuna'
-    },
+    user: null,
   },
   reducers: {
-    toggleMenu(state, action){
-      /*if(!state.user){
-          state.isMenuVisible = false
-          return
-      }*/
-      const isVisible = action.payload;
-
-      if (isVisible === undefined) {
-          state.isMenuVisible = !state.isMenuVisible;
-      } else {
-          state.isMenuVisible = isVisible;
+    toggleMenu(state, action) {
+      if (!state.user) {
+        state.isMenuVisible = false;
+        return;
       }
-  },
-    /*setUser: (state, action) => {
+      const isVisible = action.payload;
+      state.isMenuVisible = isVisible !== undefined ? isVisible : !state.isMenuVisible;
+    },
+    setUser: (state, action) => {
       const user = action.payload;
       if (user) {
         axios.defaults.headers.common['Authorization'] = `Bearer ${user.token}`;
@@ -35,12 +28,12 @@ const appSlice = createSlice({
         state.user = null;
         state.isMenuVisible = false;
       }
-    },*/
+    },
   },
 });
 
 // Exportar as ações
-export const { toggleMenu } = appSlice.actions;
+export const { toggleMenu, setUser } = appSlice.actions;
 
 // Criar o store
 const store = configureStore({
