@@ -18,6 +18,7 @@ const Auth = () => {
       const res = await axios.post(`${baseApiUrl}/signin`, userData);
       dispatch(setUser(res.data)); // Armazenando o usuário no Redux
       localStorage.setItem(userKey, JSON.stringify(res.data));
+      window.dispatchEvent(new Event('storage'));
       navigate('/');
     } catch (error) {
       showError(error)

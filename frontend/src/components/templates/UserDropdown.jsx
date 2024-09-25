@@ -25,6 +25,7 @@ const UserDropdown = ()=>{
             </div>
             <div className="user-dropdown-content">
                 {user.admin && (<Link to='admin'><i className="fa fa-cogs"></i> Administracao</Link>)}
+                <Link to='history'><i className="fa fa-history"> Historico</i></Link>
                 <Link onClick={logout} to='auth'><i className="fa fa-sign-out"></i> Sair</Link>
             </div>
         </div>

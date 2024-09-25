@@ -2,8 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { toggleMenu } from '../../config/store'; // Ajuste o caminho conforme necessário
-// import UserCart from './UserCart'; // Atualize o caminho conforme necessário
-// import UserBalanceComponent from './UserBalanceComponent'; // Atualize o caminho conforme necessário
+import UserCart from './UserCart'; // Atualize o caminho conforme necessário
+import UserBalanceComponent from './UserBalance'; // Atualize o caminho conforme necessário
 import UserDropdownComponent from './UserDropdown';
 import '../../styles/Header.css'; // Certifique-se de que o caminho está correto
 
@@ -42,8 +42,8 @@ const Header = ({ title, hideToggle, hideUserDropdown }) => {
 
       {!hideUserDropdown && (
         <>
-          {/* <UserCart />
-          <UserBalanceComponent />*/}
+          <UserBalanceComponent />
+          <UserCart />
           <UserDropdownComponent /> 
         </>
       )}

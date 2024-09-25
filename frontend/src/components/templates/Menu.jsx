@@ -42,7 +42,6 @@ const Menu = () => {
 
   const onNodeSelect = (selectedKeys, info) => {
     const { node } = info;
-    console.log('Node:', node); // Inspecione a estrutura do node
     if (node && node.key) {
       navigate(`/categories/${node.key}/products`);
     } else {
